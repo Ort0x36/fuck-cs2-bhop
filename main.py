@@ -258,42 +258,12 @@ def perform_bhop(mem: Memory) -> None:
     except Exception as e:
         log.error("perform_bhop error: %s", e)
 
-
-def check_for_updates() -> None:
-    try:
-        log.info("Checking for updates...")
-        headers = {'User-Agent': 'CS2-Bhop-Utility'}
-        r = requests.get(
-            "https://api.github.com/repos/Jesewe/cs2-bhop/tags",
-            headers=headers,
-            timeout=8
-        )
-        r.raise_for_status()
-        tags = r.json()
-        if tags:
-            latest = tags[0].get('name', '')
-            latest = latest.lstrip('vV')
-            if latest != VERSION:
-                log.warning(
-                    "Update available: current %s vs latest %s",
-                    VERSION,
-                    latest
-                )
-            else:
-                log.info("You are running the latest version.")
-        else:
-            log.info("Repository has no tags.")
-    except Exception as e:
-        log.error("Update check failed: %s", e)
-
-
 def main() -> None:
     Offsets.load()
     if Offsets.dwForceJump == 0:
         log.error("dwForceJump is 0 — cannot continue.")
         return
 
-    check_for_updates() 
     target_name = "cs2.exe"
     log.info("Searching for process %s ...", target_name)
     pid = find_process_by_name(target_name)
