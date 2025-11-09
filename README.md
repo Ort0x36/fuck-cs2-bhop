@@ -1,4 +1,7 @@
-![Bunnyhop](https://dl.glitter-graphics.com/pub/3709/3709827od4i4nlr52.gif)
+<p align="center">
+  <img src="https://dl.glitter-graphics.com/pub/3709/3709827od4i4nlr52.gif" alt="Bunnyhop">
+</p>
+
 
 # fuck-cs2-Bhop
 
